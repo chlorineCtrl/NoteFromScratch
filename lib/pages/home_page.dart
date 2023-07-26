@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:note_flutterfire/pages/writing_page.dart';
+import 'package:note_flutterfire/widgets/bottom_navbar.dart';
+import 'package:note_flutterfire/widgets/floating_create_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,37 +13,24 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(
-        child: Text('Home Page'),
+      appBar: AppBar(
+        title: const Text("FlutterNotes"),
       ),
-      floatingActionButton: SizedBox(
-        height: 100,
-        width: 100,
-        child: FloatingActionButton(
-          shape: const CircleBorder(),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const WritingPage(),
-              ),
-            );
-          },
-          backgroundColor: Colors.redAccent,
-          child: const Icon(
-            Icons.add,
-            color: Colors.white,
-            size: 32,
+      body: const Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Your notes',
           ),
-        ),
+
+          // NOTE CARDS
+          SizedBox(),
+        ],
       ),
+      floatingActionButton: const FloatingCreateButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: const BottomAppBar(
-        clipBehavior: Clip.antiAlias,
-        notchMargin: 5,
-        shape: CircularNotchedRectangle(),
-        color: Colors.red,
-      ),
+      bottomNavigationBar: const BottomNavbar(),
     );
   }
 }
